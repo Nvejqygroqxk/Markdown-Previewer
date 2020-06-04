@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import NameForm from './App';
 import * as serviceWorker from './serviceWorker';
 
+const ReactMarkdown = require('react-markdown')
+
+const input = '# This is a header\n\nAnd this is a paragraph'
+
 ReactDOM.render(
   <React.StrictMode>
-    <NameForm />
+    <ReactMarkdown source={input} />
   </React.StrictMode>,
   document.getElementById('root')
 );
