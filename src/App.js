@@ -2,21 +2,18 @@ import React from 'react';
 import './App.css';
 import marked from 'marked';
 
-class MarkdownExample extends React.Component {
-  getMarkdownText() {
-    var rawMarkup = marked('This is _Markdown_.', {sanitize: true});
-    return { __html: rawMarkup };
-  }
-  render() {
-    return <div dangerouslySetInnerHTML={this.getMarkdownText()} />
-  }
+class TextArea extends React.Component {
+	render() {
+		return (
+			<div dangerouslySetInnerHTML={{__html: this.props.value}} />
+		);
+	}
 }
 
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -27,16 +24,10 @@ class NameForm extends React.Component {
   render() {
     return (
       <>
-      <form >
-        <label>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-      </form>
-      <div>{this.state.value}
-        {marked('>**lol**')}
-        <strong>lol</strong>
-      </div>
-      
+      <div>
+				<textarea onChange={this.handleChange} />
+				<TextArea value={marked(this.state.value,{sanitize: true})} />
+			</div>
       </>
     );
   }
