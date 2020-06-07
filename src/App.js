@@ -5,7 +5,10 @@ import marked from 'marked';
 class TextArea extends React.Component {
 	render() {
 		return (
+      <>
 			<div dangerouslySetInnerHTML={{__html: this.props.value}} />
+      <div>{this.props.value}</div>
+      </>
 		);
 	}
 }
@@ -13,7 +16,7 @@ class TextArea extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: "One  \nTwo  \nThree  \nFour"};
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -25,8 +28,9 @@ class NameForm extends React.Component {
     return (
       <>
       <div>
-				<textarea onChange={this.handleChange} />
-				<TextArea value={marked(this.state.value,{sanitize: true})} />
+				<textarea id="editor" onChange={this.handleChange} defaultValue={this.state.value}>
+        </textarea>
+				<TextArea id="preview" value={marked(this.state.value,{sanitize: true})} />
 			</div>
       </>
     );
