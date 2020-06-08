@@ -1,6 +1,24 @@
 import React from 'react';
 import './App.css';
-import marked from 'marked';
+//import marked from 'marked';
+
+const marked = require('marked');
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  highlight: function(code, language) {
+    const hljs = require('highlight.js');
+    const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+    return hljs.highlight(validLanguage, code).value;
+  },
+  pedantic: false,
+  gfm: true,
+  breaks: true,
+  sanitize: false,
+  smartLists: true,
+  smartypants: false,
+  xhtml: false
+});
 
 class TextArea extends React.Component {
 	render() {
@@ -15,7 +33,7 @@ class TextArea extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: "One\n==\nTwo\n--\n[Three]\n\n`Four`\n\n[Three]: https://github.com/markedjs/marked/\n```\nFive\n```\n* Six\n* Seven\n>Eight\n>Nine\n\n![Google Logo](http://www.google.com/images/errors/logo_sm.gif)\n\n**Ten**"};
+    this.state = {value: "h1\n==\nh2\n--\n[Link]\n\n`Inline code`\n\n[Link]: https://github.com/markedjs/marked/\n```\nCode block\n```\n* List\n* List\n>Blockquote\n>Blockquote\n\n![Image](https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)\n\n**Bold**"};
     this.handleChange = this.handleChange.bind(this);
   }
 
