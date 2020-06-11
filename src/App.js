@@ -33,7 +33,7 @@ class TextArea extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: "h1\n==\nh2\n--\n[Link]\n\n`Inline code`\n\n[Link]: https://github.com/markedjs/marked/\n```\nCode block\n```\n* List\n* List\n>Blockquote\n>Blockquote\n\n![Image](https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80)\n\n**Bold**"};
+    this.state = {value: "h1\n==\nh2\n--\n[Link]\n\n`Inline code`\n\n[Link]: https://github.com/markedjs/marked/\n```\nCode block\n```\n* List\n* List\n>Blockquote\n>Blockquote\n\n![Image](https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80#img1)\n\n**Bold**"};
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -43,10 +43,10 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <div>
-				<textarea id="editor" onChange={this.handleChange} defaultValue={this.state.value}>
+      <div id="x">
+        <textarea id="editor" onChange={this.handleChange} defaultValue={this.state.value}>
         </textarea>
-          <TextArea value={marked(this.state.value,{sanitize: true})} />
+        <TextArea value={marked(this.state.value,{sanitize: true})} />
       </div>
     );
   }
