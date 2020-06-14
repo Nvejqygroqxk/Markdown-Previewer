@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-//import marked from 'marked';
 
 const marked = require('marked');
 
@@ -30,7 +29,7 @@ class TextArea extends React.Component {
 	}
 }
 
-class NameForm extends React.Component {
+class Kek extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: "h1\n==\nh2\n--\n[Link]\n\n`Inline code`\n\n[Link]: https://github.com/markedjs/marked/\n```\nCode block\n```\n* List\n* List\n>Blockquote\n>Blockquote\n\n![Image](https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80#img1)\n\n**Bold**"};
@@ -52,4 +51,4 @@ class NameForm extends React.Component {
   }
 }
 
-export default NameForm;
+export default Kek;
